@@ -42,9 +42,10 @@ else
   exit 1
 end
 
-node_url = File.join(base_url, "_nodes", cli.config[:server])
+node_url = File.join(base_url, "_nodes")
 node_url = "#{node_url}?jvm=true"
 res = RestClient.get node_url
+
 if res.code == 200
   nodes = JSON.parse(res.body)
   node_id = nodes["nodes"].keys.first
